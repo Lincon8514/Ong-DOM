@@ -134,6 +134,8 @@ ONG-DOM-final/
 
 ## 🚀 Como Executar
 
+### link direto: https://lincon8514.github.io/Ong-DOM/
+
 ### Pré-requisitos
 
 - Navegador web moderno (Chrome, Firefox, Edge)
