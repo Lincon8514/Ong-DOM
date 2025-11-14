@@ -1,6 +1,4 @@
-# 🩷 DOM - Defensores da Oncologia Materno-infantil
-
-![DOM Logo](assets/images/Logo_final.png)
+# 🩷 DOM - Drops Of Milk
 
 > Plataforma digital de gestão de banco de leite humano, conectando doadores, voluntários e beneficiários.
 
