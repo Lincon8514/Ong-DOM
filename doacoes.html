@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Doações - DOM</title>
+    
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/doacoes.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <button id="menu-btn" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
+        <div class="brand">
+          <img src="assets/images/Logo_final.png" alt="DOM logo" />
+        </div>
+        <button id="theme-toggle" aria-label="Alternar tema" class="theme-btn">🌙</button>
+        <nav>
+          <ul>
+            <!-- Será preenchido via JavaScript -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="doacoes-container">
+      <!-- Hero -->
+      <section class="doacoes-hero">
+        <h1>Faça sua Doação</h1>
+        <p>Sua contribuição faz a diferença na vida de muitas famílias</p>
+      </section>
+
+      <!-- Valores Sugeridos -->
+      <section class="valores-sugeridos">
+        <h2>Escolha um valor</h2>
+        <div class="valores-grid">
+          <div class="valor-card" data-valor="10">
+            <div class="valor-preco">R$ 10</div>
+            <div class="valor-descricao">Contribuição básica</div>
+          </div>
+          <div class="valor-card" data-valor="25">
+            <div class="valor-preco">R$ 25</div>
+            <div class="valor-descricao">Apoio importante</div>
+          </div>
+          <div class="valor-card" data-valor="50">
+            <div class="valor-preco">R$ 50</div>
+            <div class="valor-descricao">Ajuda significativa</div>
+          </div>
+          <div class="valor-card" data-valor="100">
+            <div class="valor-preco">R$ 100</div>
+            <div class="valor-descricao">Doação generosa</div>
+          </div>
+        </div>
+
+        <div class="valor-custom">
+          <label for="valorCustom">Ou digite um valor personalizado:</label>
+          <div class="valor-custom-input">
+            <span>R$</span>
+            <input type="number" id="valorCustom" placeholder="0.00" min="1" step="0.01">
+          </div>
+        </div>
+      </section>
+
+      <!-- Métodos de Pagamento -->
+      <section class="doacao-form">
+        <h2>Escolha o método de pagamento</h2>
+        <div class="payment-methods">
+          <div class="payment-method" data-method="pix">
+            <div class="payment-name">PIX</div>
+          </div>
+          <div class="payment-method" data-method="credito">
+            <div class="payment-name">Crédito</div>
+          </div>
+          <div class="payment-method" data-method="debito">
+            <div class="payment-name">Débito</div>
+          </div>
+          <div class="payment-method" data-method="boleto">
+            <div class="payment-name">Boleto Bancário</div>
+          </div>
+        </div>
+
+        <!-- Campo de Mensagem -->
+        <div class="mensagem-section">
+          <label for="mensagemDoacao">Deixe uma mensagem (opcional)</label>
+          <textarea 
+            id="mensagemDoacao" 
+            placeholder="Escreva uma mensagem que será publicada no mural de doações..."
+            maxlength="300"
+          ></textarea>
+          <div class="char-count" id="charCount">0/300</div>
+          <small>Sua mensagem será pública e aparecerá no mural de doações</small>
+        </div>
+
+        <!-- Resumo -->
+        <div class="doacao-resumo">
+          <h3>Resumo da Doação</h3>
+          <div class="resumo-item">
+            <span>Valor:</span>
+            <strong id="resumoValor">R$ 0,00</strong>
+          </div>
+          <div class="resumo-item">
+            <span>Método:</span>
+            <strong id="resumoMetodo">-</strong>
+          </div>
+          <div class="resumo-item">
+            <span>Total:</span>
+            <strong id="resumoTotal">R$ 0,00</strong>
+          </div>
+        </div>
+
+        <form id="donationForm">
+          <button type="submit" class="btn-doar">
+            Confirmar Doação
+          </button>
+        </form>
+      </section>
+
+      <!-- Mural de Mensagens -->
+      <section class="mural-mensagens">
+        <h3>Mural de Mensagens</h3>
+        <div id="muralMensagens" class="mensagens-lista">
+          <!-- Será preenchido via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Impacto -->
+      <section class="impacto-section">
+        <h3>Nosso Impacto</h3>
+        <div class="impacto-grid">
+          <div class="impacto-item">
+            <div class="impacto-numero">R$ <span id="totalArrecadado">0</span></div>
+            <div class="impacto-texto">Total arrecadado</div>
+          </div>
+          <div class="impacto-item">
+            <div class="impacto-numero"><span id="totalDoadores">0</span></div>
+            <div class="impacto-texto">Doadores únicos</div>
+          </div>
+          <div class="impacto-item">
+            <div class="impacto-numero"><span id="totalDoacoes">0</span></div>
+            <div class="impacto-texto">Doações realizadas</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Histórico -->
+      <section class="historico-doacoes">
+        <h3>Seu Histórico de Doações</h3>
+        <div id="historicoLista" class="historico-lista">
+          <!-- Será preenchido via JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <footer><p>&copy; 2025 DOM - Todos os direitos reservados</p></footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/projetos.js"></script>
+    <script src="js/doacoes.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/doacoes-page.js"></script>
+  </body>
+</html>

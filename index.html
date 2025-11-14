@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM - Drops of Milk</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- ou -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <button id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+          ☰
+        </button>
+        <div class="brand">
+          <img src="assets/images/Logo_final.png" alt="DOM logo" />
+        </div>
+        <button id="theme-toggle" aria-label="Alternar tema" class="theme-btn">
+          🌙
+        </button>
+        <nav>
+          <ul>
+            <!-- Será preenchido via JavaScript -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Banner Carousel (Rotativo) -->
+    <section class="hero-carousel">
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <!-- Slide 1 -->
+          <div class="carousel-slide active">
+            <img src="assets/images/img_1.jpeg" alt="Banner 1" />
+            <div class="carousel-caption">
+              <h2>Transforme Vidas com a DOM</h2>
+              <p>Juntos, levamos esperança e cuidado para mães e bebês</p>
+              <a href="doacoes.html" class="btn btn-primary"
+                >Fazer uma Doação</a
+              >
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <img src="assets/images/img_3.jpg" alt="Banner 2" />
+            <div class="carousel-caption">
+              <h2>Seja um Voluntário</h2>
+              <p>
+                Doe seu tempo e faça a diferença na vida de quem mais precisa
+              </p>
+              <a href="projetos.html" class="btn btn-primary"
+                >Quero Participar</a
+              >
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <img src="assets/images/img_6.jpeg" alt="Banner 3" />
+            <div class="carousel-caption">
+              <h2>Doe Leite Materno</h2>
+              <p>
+                Cada gota de leite representa vida e esperança para bebês
+                prematuros
+              </p>
+              <a href="contato.html" class="btn btn-primary">Saiba Como Doar</a>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="carousel-slide">
+            <img src="assets/images/img_4.jpeg" alt="Banner 4" />
+            <div class="carousel-caption">
+              <h2>Parceria Corporativa</h2>
+              <p>
+                Empresas que transformam o mundo através da responsabilidade
+                social
+              </p>
+              <a href="contato.html" class="btn btn-primary">Seja Parceiro</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles -->
+        <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
+        <button class="carousel-control next" onclick="moveSlide(1)">❯</button>
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          <span class="indicator active" onclick="currentSlide(0)"></span>
+          <span class="indicator" onclick="currentSlide(1)"></span>
+          <span class="indicator" onclick="currentSlide(2)"></span>
+          <span class="indicator" onclick="currentSlide(3)"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quem Somos (B2C - Pessoas) -->
+    <section class="quem-somos">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Quem Somos</h2>
+          <p class="section-subtitle">
+            Conheça nossa história e nosso propósito
+          </p>
+        </div>
+
+        <div class="quem-somos-content">
+          <div class="quem-somos-card">
+            <div class="card-icon"></div>
+            <h3>Nossa História</h3>
+            <p>
+              A <strong>DOM</strong> é um banco de leite humano localizado em
+              São Paulo-SP, integrante da Rede Brasileira de Bancos de Leite
+              Humano (rBLH Brasil). Nos dedicamos a promover a saúde infantil e
+              apoiar a amamentação com segurança, qualidade e carinho.<br />
+              Seguimos rigorosamente os padrões da <strong>rBLH Brasil</strong>,
+              da <strong>NBCAL</strong> e do <strong>CODEX</strong>.<br />
+              A <strong>DOM</strong> oferece suporte técnico e emocional
+              gratuito às famílias e às mães doadoras, fortalecendo o vínculo
+              entre o gesto de doar e o impacto que ele gera na vida de tantos
+              pequenos.<br />
+              <strong
+                >Cada gota é tratada com o cuidado e o amor que alimentam o
+                futuro.</strong
+              >
+            </p>
+          </div>
+
+          <div class="quem-somos-card">
+            <div class="card-icon"></div>
+            <h3>Nosso Impacto</h3>
+            <p>
+              Na <strong>DOM</strong>, acreditamos que o cuidado vai além do
+              leite — ele é feito de escuta, presença e amor.<br />
+              Acolhemos cada mãe com respeito, empatia e informação, entendendo
+              que doar é também receber: afeto, força e propósito.<br />
+              Cada atendimento, conversa e doação é um ato transformador, capaz
+              de renovar laços e gerar um ciclo de carinho que se multiplica.<br />
+              <strong
+                >Porque quando uma mãe se sente apoiada, o amor flui, e o mundo
+                cresce mais leve.</strong
+              >
+            </p>
+          </div>
+
+          <div class="quem-somos-card">
+            <div class="card-icon"></div>
+            <h3>Cuidado que Transforma</h3>
+            <p>
+              Cada gota de leite doada representa mais do que alimento — é
+              esperança.<br />
+              A <strong>DOM</strong> já inspirou dezenas de mães a se tornarem
+              doadoras e apoiadoras, criando uma rede de solidariedade que nutre
+              não só bebês, mas também vínculos entre famílias.<br />
+              Com projetos voltados à saúde emocional, orientação sobre
+              amamentação e campanhas de conscientização, transformamos gestos
+              simples em histórias de vida.<br />
+              <strong
+                >Nosso impacto se mede em vidas salvas, corações acolhidos e
+                mães fortalecidas.</strong
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefícios do Aleitamento -->
+    <section class="beneficios-aleitamento">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Benefícios do Aleitamento Humano</h2>
+        </div>
+
+        <div class="aleitamento-intro">
+          <p>
+            De acordo com a <strong>Organização Mundial da Saúde (OMS)</strong>, apenas <strong>38% das crianças</strong> são amamentadas de maneira exclusiva com o leite humano e em demanda livre até o sexto mês de vida.
+          </p>
+          <p>
+            O leite humano oferece benefícios significativos para a saúde das crianças e adultos. Ele <strong>reduz em 13% a mortalidade infantil</strong> em crianças menores de 5 anos. Além disso, o consumo dele na infância está associado a um menor risco de <strong>hipertensão, colesterol alto, diabetes e obesidade</strong> na vida adulta.
+          </p>
+        </div>
+
+        <!-- BENEFÍCIOS PARA BEBÊS -->
+        <div class="benefits-category">
+          <h3 class="category-title">Benefícios para o Bebê</h3>
+          <div class="benefits-grid">
+            <!-- Card 1 - Vínculo -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/bebe1.jpg" alt="Vínculo mãe e bebê">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Vínculo Afetivo</h4>
+                    <p>Fortalece o vínculo entre o bebê e a pessoa que amamenta</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 - Digestão -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/bebe2.jpg" alt="Digestão saudável">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Digestão Saudável</h4>
+                    <p>Reduz cólicas e melhora a digestão do bebê</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 - Desenvolvimento -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/bebe3.jpg" alt="Desenvolvimento">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Desenvolvimento</h4>
+                    <p>Estimula a inteligência e fortalece a arcada dentária</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 - Proteção -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/bebe4.jpg" alt="Proteção contra doenças">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Proteção Infantil</h4>
+                    <p>Diminui riscos de doenças alérgicas, diarreia e problemas respiratórios</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 - Imunidade -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/bebe5.jpg" alt="Sistema imunológico">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Imunidade Forte</h4>
+                    <p>Fornece anticorpos essenciais que protegem contra infecções</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENEFÍCIOS PARA MAMÃES -->
+        <div class="benefits-category">
+          <h3 class="category-title">Benefícios para a Mãe</h3>
+          <div class="benefits-grid">
+            <!-- Card 6 - Recuperação -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/mae1.jpg" alt="Recuperação pós-parto">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Recuperação Rápida</h4>
+                    <p>Reduz o sangramento e acelera a recuperação pós-parto</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 7 - Peso -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/mae2.jpg" alt="Perda de peso">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Peso Saudável</h4>
+                    <p>Intensifica a perda de peso de forma natural</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 8 - Saúde Óssea -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/mae3.jpg" alt="Saúde óssea">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Saúde Óssea</h4>
+                    <p>Contribui para a prevenção da osteoporose</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 9 - Cardiovascular -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/mae4.jpg" alt="Saúde do coração">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Coração Saudável</h4>
+                    <p>Reduz o risco de doenças cardiovasculares</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 10 - Prevenção -->
+            <div class="benefit-card drop-shape">
+              <div class="benefit-image">
+                <img src="assets/images/mae5.jpg" alt="Prevenção de câncer">
+                <div class="benefit-overlay">
+                  <div class="benefit-text">
+                    <h4>Prevenção</h4>
+                    <p>Diminui a incidência de câncer de mama, ovário e endométrio</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos em Destaque -->
+    <section class="projetos-destaque">
+      <!-- ...existing code... -->
+    </section>
+
+
+    <!-- Projetos em Destaque -->
+    <section class="projetos-destaque">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Projetos em Destaque</h2>
+          <p class="section-subtitle">
+            Conheça nossos principais projetos e participe como voluntário
+          </p>
+        </div>
+
+        <div id="featuredProjects" class="projetos-grid">
+          <!-- Será preenchido via JavaScript -->
+        </div>
+
+        <div class="section-cta">
+          <a href="projetos.html" class="btn btn-primary"
+            >Ver Todos os Projetos</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre (B2B - Empresas) -->
+    <section class="sobre-b2b">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Parceria Corporativa</h2>
+          <p class="section-subtitle">
+            Junte-se a nós e faça a diferença através da sua empresa
+          </p>
+        </div>
+
+        <div class="sobre-content">
+          <div class="sobre-text">
+            <h3>Por que fazer parceria com a DOM?</h3>
+            <p>
+             
+              Juntos, multiplicamos o impacto de um gesto simples que pode mudar
+              o mundo: doar é um dom que salva vidas.
+            </p>
+
+            <h4>Benefícios da Parceria:</h4>
+            <ul class="beneficios-list">
+              <li>
+                <span class="check-icon">✓</span>
+                <div>
+                  <strong>Impacto Social Mensurável:</strong> Relatórios
+                  detalhados sobre o uso de recursos e resultados alcançados
+                </div>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <div>
+                  <strong>Visibilidade da Marca:</strong> Reconhecimento em
+                  nossos canais digitais e eventos
+                </div>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <div>
+                  <strong>Engajamento de Colaboradores:</strong> Oportunidades
+                  de voluntariado corporativo
+                </div>
+              </li>
+            </ul>
+
+            <div class="cta-empresas">
+              <a href="contato.html" class="btn btn-primary"
+                >Quero ser Parceiro</a
+              >
+            </div>
+          </div>
+
+          <div class="sobre-stats">
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Famílias Apoiadas</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">10.000L</div>
+              <div class="stat-label">Leite Arrecadado</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">200+</div>
+              <div class="stat-label">Projetos Realizados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Voluntários Ativos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nossa Equipe -->
+    <section class="nossa-equipe">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Nossa Equipe</h2>
+          <p class="section-subtitle">
+            Conheça as pessoas que fazem a DOM acontecer
+          </p>
+        </div>
+
+        <div class="team-gallery">
+          <!-- Membro 1 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/CEO.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Kerris Leite</h4>
+              <p class="member-role">C.O</p>
+            </div>
+          </div>
+
+          <!-- Membro 2 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/Diretor.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Caio Gonçalves</h4>
+              <p class="member-role">Diretor</p>
+            </div>
+          </div>
+
+          <!-- Membro 3 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/medica.jpeg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Silvana Rodrigues</h4>
+              <p class="member-role">Médica Obstetra</p>
+            </div>
+          </div>
+
+          <!-- Membro 4 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/medico.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Daniel Perli</h4>
+              <p class="member-role">Médico Pediatra</p>
+            </div>
+          </div>
+
+          <!-- Membro 5 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/nutricionista.jpg"
+                alt="Membro da equipe"
+              />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Leticia Sabino</h4>
+              <p class="member-role">Nutricionista</p>
+            </div>
+          </div>
+
+          <!-- Membro 6 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/nutricionista2.jpg"
+                alt="Membro da equipe"
+              />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Audacy Feitosa</h4>
+              <p class="member-role">Nutricionista</p>
+            </div>
+          </div>
+
+          <!-- Membro 7 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/psicologa.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Thaís Fasterra</h4>
+              <p class="member-role">Psicóloga</p>
+            </div>
+          </div>
+
+          <!-- Membro 8 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/enfermeira.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Mariane Amorim</h4>
+              <p class="member-role">Enfermeira</p>
+            </div>
+          </div>
+
+          <!-- Membro 9 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/enfermeira2.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Ludymilla Takahashi</h4>
+              <p class="member-role">Enfermeira</p>
+            </div>
+          </div>
+
+          <!-- Membro 10 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/tecenf1.jpeg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Flavia Monteiro</h4>
+              <p class="member-role">Técnica de Enfermagem</p>
+            </div>
+          </div>
+
+          <!-- Membro 11 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/tecenf2.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Chistopher Nonaka</h4>
+              <p class="member-role">Técnico de Enfermagem</p>
+            </div>
+          </div>
+
+          <!-- Membro 12 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/tecenf3.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Samuel William</h4>
+              <p class="member-role">Técnico de Enfermagem</p>
+            </div>
+          </div>
+
+          <!-- Membro 13 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/tecenf4.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Liliane Almeida</h4>
+              <p class="member-role">Técnico de Enfermagem</p>
+            </div>
+          </div>
+
+          <!-- Membro 14 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/tecenf5.jpg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Jennifer Luiza</h4>
+              <p class="member-role">Técnica de Enfermagem</p>
+            </div>
+          </div>
+
+          <!-- Membro 15 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/higienizacao.jpg"
+                alt="Membro da equipe"
+              />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Yasmin Vitória</h4>
+              <p class="member-role">Higienização</p>
+            </div>
+          </div>
+
+          <!-- Membro 16 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img
+                src="assets/images/higienizacao2.jpg"
+                alt="Membro da equipe"
+              />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Antônio Domingos</h4>
+              <p class="member-role">Higienização</p>
+            </div>
+          </div>
+
+          <!-- Membro 17 -->
+          <div class="team-member">
+            <div class="member-photo">
+              <img src="assets/images/motorista.jpeg" alt="Membro da equipe" />
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Jean Costa</h4>
+              <p class="member-role">Motorista</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 DOM - Todos os direitos reservados</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/projetos.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/index-page.js"></script>
+  </body>
+</html>

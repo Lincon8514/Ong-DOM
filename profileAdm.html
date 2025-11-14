@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Painel Admin - DOM</title>
+    
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/profile-admin.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <button id="menu-btn" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
+        <div class="brand">
+          <img src="assets/images/Logo_final.png" alt="DOM logo" />
+        </div>
+        <button id="theme-toggle" aria-label="Alternar tema" class="theme-btn">🌙</button>
+        <nav>
+          <ul>
+            <!-- Será preenchido via JavaScript -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="profile-container">
+      <!-- Header do Perfil Admin -->
+      <div class="profile-header">
+        <div class="profile-header-content">
+          <div id="adminAvatar" class="profile-avatar">A</div>
+          <div class="profile-info">
+            <h1 id="adminName" class="profile-name">Administrador</h1>
+            <div class="profile-type">Administrador do Sistema</div>
+            <div id="adminEmail" class="profile-email">admin@dom.com</div>
+          </div>
+          <div class="profile-actions">
+            
+            <button id="btnLogout" class="btn-profile btn-logout">Sair</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estatísticas Gerais -->
+      <div class="admin-stats">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-content">
+            <div class="stat-value" id="totalUsers">0</div>
+            <div class="stat-label">Usuários Cadastrados</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <div class="stat-content">
+            <div class="stat-value" id="totalProjects">0</div>
+            <div class="stat-label">Projetos Ativos</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div class="stat-content">
+            <div class="stat-value" id="totalDonations">0</div>
+            <div class="stat-label">Doações Recebidas</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">💵</div>
+          <div class="stat-content">
+            <div class="stat-value">R$ <span id="totalAmount">0.00</span></div>
+            <div class="stat-label">Total Arrecadado</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📧</div>
+          <div class="stat-content">
+            <div class="stat-value" id="totalMessages">0</div>
+            <div class="stat-label">Mensagens Pendentes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abas de Gerenciamento -->
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="users">Usuários</button>
+        <button class="tab-btn" data-tab="projects">Projetos</button>
+        <button class="tab-btn" data-tab="donations">Doações</button>
+        <button class="tab-btn" data-tab="messages">Mensagens</button> <!-- NOVA ABA -->
+      </div>
+
+      <!-- Conteúdo das Abas -->
+      <div class="admin-content">
+        <!-- Tab Usuários -->
+        <div class="tab-content active" id="tab-users">
+          <div class="content-header">
+            <h2>Gerenciar Usuários</h2>
+          </div>
+          <div id="usersList">
+            <!-- Será preenchido via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Tab Projetos -->
+        <div class="tab-content" id="tab-projects">
+          <div class="content-header">
+            <h2>Gerenciar Projetos</h2>
+            <button id="btnNewProject" class="btn btn-primary">+ Novo Projeto</button>
+          </div>
+          <div id="projectsList">
+            <!-- Será preenchido via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Tab Doações -->
+        <div class="tab-content" id="tab-donations">
+          <div class="content-header">
+            <h2>Histórico de Doações</h2>
+          </div>
+          <div id="donationsList">
+            <!-- Será preenchido via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Tab Mensagens (NOVA) -->
+        <div class="tab-content" id="tab-messages">
+          <div class="content-header">
+            <h2>Mensagens de Contato</h2>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn btn-secondary" onclick="filterMessages('todos')">Todas</button>
+              <button class="btn btn-secondary" onclick="filterMessages('pendente')">Pendentes</button>
+              <button class="btn btn-secondary" onclick="filterMessages('respondida')">Respondidas</button>
+            </div>
+          </div>
+          <div id="messagesList">
+            <!-- Será preenchido via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal de Edição de Perfil -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Editar Perfil Admin</h2>
+          <button type="button" id="closeModal" class="modal-close">&times;</button>
+        </div>
+        
+        <form id="editProfileForm" class="profile-edit-form">
+          <div class="form-group">
+            <label for="editNome">Nome</label>
+            <input type="text" id="editNome" required>
+          </div>
+
+          <div class="form-group">
+            <label for="editEmail">E-mail</label>
+            <input type="email" id="editEmail" required>
+          </div>
+
+          <div class="form-group">
+            <label for="editTelefone">Telefone</label>
+            <input type="text" id="editTelefone" maxlength="15">
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="btnCancel" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" id="btnSave" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Novo/Editar Projeto - VERSÃO COMPLETA -->
+    <div id="newProjectModal" class="modal">
+      <div class="modal-content" style="max-width: 900px;">
+        <div class="modal-header">
+          <h2 class="modal-title" id="projectModalTitle">Novo Projeto</h2>
+          <button type="button" id="closeProjectModal" class="modal-close">&times;</button>
+        </div>
+        
+        <form id="newProjectForm" class="profile-edit-form">
+          <input type="hidden" id="projectId" value="">
+          
+          <div class="form-group">
+            <label for="projectTitulo">Título do Projeto *</label>
+            <input type="text" id="projectTitulo" required placeholder="Ex: Campanha de Arrecadação">
+          </div>
+
+          <div class="form-group">
+            <label for="projectCategoria">Categoria *</label>
+            <select id="projectCategoria" required>
+              <option value="">Selecione...</option>
+              <option value="Saúde">Saúde</option>
+              <option value="Educação">Educação</option>
+              <option value="Assistência Social">Assistência Social</option>
+              <option value="Meio Ambiente">Meio Ambiente</option>
+              <option value="Coleta">Coleta</option>
+              <option value="Conscientização">Conscientização</option>
+              <option value="Gestão">Gestão</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="projectDescricao">Descrição Curta *</label>
+            <textarea id="projectDescricao" rows="2" required placeholder="Resumo do projeto em poucas palavras"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="projectDescricaoCompleta">Descrição Completa *</label>
+            <textarea id="projectDescricaoCompleta" rows="4" required placeholder="Detalhes completos do projeto, objetivos, metodologia..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="projectLocal">Local *</label>
+            <input type="text" id="projectLocal" placeholder="Cidade - UF" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label for="projectVagas">Número de Vagas *</label>
+              <input type="number" id="projectVagas" min="1" value="10" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="projectStatus">Status *</label>
+              <select id="projectStatus" required>
+                <option value="ativo">Ativo</option>
+                <option value="inativo">Inativo</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label for="projectDataInicio">Data de Início *</label>
+              <input type="date" id="projectDataInicio" required>
+            </div>
+
+            <div class="form-group">
+              <label for="projectDataFim">Data de Término</label>
+              <input type="date" id="projectDataFim">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="projectRequisitos">Requisitos (um por linha) *</label>
+            <textarea id="projectRequisitos" rows="4" required placeholder="Disponibilidade de 4h por semana&#10;Maior de 18 anos&#10;Comprometimento"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="projectBeneficios">Benefícios (um por linha) *</label>
+            <textarea id="projectBeneficios" rows="4" required placeholder="Certificado de voluntariado&#10;Desenvolvimento de habilidades&#10;Networking"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="projectResponsavel">Responsável</label>
+            <input type="text" id="projectResponsavel" value="Admin DOM">
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="btnCancelProject" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" id="btnCreateProject" class="btn btn-primary">Criar Projeto</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Visualizar Inscritos -->
+    <div id="viewEnrollmentsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="enrollmentsModalTitle">Inscritos no Projeto</h2>
+          <button type="button" id="closeEnrollmentsModal" class="modal-close">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          <div id="enrollmentsList">
+            <!-- Será preenchido via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer><p>&copy; 2025 DOM - Todos os direitos reservados</p></footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/projetos.js"></script>
+    <script src="js/doacoes.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/profile-admin.js"></script>
+  </body>
+</html>

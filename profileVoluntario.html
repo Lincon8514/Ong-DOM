@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Meu Perfil - DOM</title>
+    
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <button id="menu-btn" aria-label="Abrir menu" aria-expanded="false">&#9776;</button>
+        <div class="brand">
+          <img src="assets/images/Logo_final.png" alt="DOM logo" />
+        </div>
+        <button id="theme-toggle" aria-label="Alternar tema" class="theme-btn">🌙</button>
+        <nav>
+          <ul>
+            <!-- Será preenchido via JavaScript -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="profile-container">
+      <!-- Header do Perfil com Avatar -->
+      <div class="profile-banner">
+        <div class="profile-banner-content">
+          <div id="userAvatar" class="profile-avatar-large">V</div>
+          <div class="profile-header-info">
+            <h1 id="userName" class="profile-title">Carregando...</h1>
+            <p id="userEmail" class="profile-subtitle">email@exemplo.com</p>
+            <span class="profile-badge">Voluntário</span>
+          </div>
+        </div>
+        <button type="button" id="btnLogout" class="btn-logout-header">
+          🚪 Sair
+        </button>
+      </div>
+
+      <!-- Sistema de Abas -->
+      <div class="profile-tabs">
+        <button class="tab-btn active" data-tab="dados">
+          👤 Meus Dados
+        </button>
+        <button class="tab-btn" data-tab="projetos">
+          📋 Meus Projetos
+        </button>
+        <button class="tab-btn" data-tab="doacoes">
+          💰 Minhas Doações
+        </button>
+      </div>
+
+      <!-- Conteúdo das Abas -->
+      <div class="profile-content">
+        
+        <!-- ABA: MEUS DADOS -->
+        <div class="tab-content active" id="tab-dados">
+          <div class="dados-header">
+            <h2>📋 Informações Pessoais</h2>
+          </div>
+
+          <div class="dados-grid">
+            <div class="dado-item">
+              <span class="dado-label">Nome Completo</span>
+              <span class="dado-value" id="viewNome">-</span>
+            </div>
+
+            <div class="dado-item">
+              <span class="dado-label">E-mail</span>
+              <span class="dado-value" id="viewEmail">-</span>
+            </div>
+
+            <div class="dado-item">
+              <span class="dado-label">CPF</span>
+              <span class="dado-value" id="viewCPF">-</span>
+            </div>
+
+            <div class="dado-item">
+              <span class="dado-label">Telefone</span>
+              <span class="dado-value" id="viewTelefone">-</span>
+            </div>
+
+            <div class="dado-item">
+              <span class="dado-label">Data de Nascimento</span>
+              <span class="dado-value" id="viewDataNascimento">-</span>
+            </div>
+
+            <div class="dado-item full-width">
+              <span class="dado-label">Endereço</span>
+              <span class="dado-value" id="viewEndereco">-</span>
+            </div>
+
+            <div class="dado-item">
+              <span class="dado-label">CEP</span>
+              <span class="dado-value" id="viewCEP">-</span>
+            </div>
+
+            <div class="dado-item">
+              <span class="dado-label">Cidade</span>
+              <span class="dado-value" id="viewCidade">-</span>
+            </div>
+
+            <div class="dado-item">
+              <span class="dado-label">Estado</span>
+              <span class="dado-value" id="viewEstado">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA: MEUS PROJETOS -->
+        <div class="tab-content" id="tab-projetos">
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-icon">📋</div>
+              <div class="stat-info">
+                <span class="stat-value" id="projectsCount">0</span>
+                <span class="stat-label">Projetos Ativos</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="userProjectsList" class="projects-list">
+            <div class="empty-state">
+              <div class="empty-icon">📋</div>
+              <p>Você ainda não está inscrito em nenhum projeto</p>
+              <a href="projetos.html" class="btn btn-primary">Ver Projetos Disponíveis</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA: MINHAS DOAÇÕES -->
+        <div class="tab-content" id="tab-doacoes">
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-icon">💰</div>
+              <div class="stat-info">
+                <span class="stat-value">R$ <span id="totalDonated">0.00</span></span>
+                <span class="stat-label">Total Doado</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-info">
+                <span class="stat-value" id="donationsCount">0</span>
+                <span class="stat-label">Doações Realizadas</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="userDonationsList" class="donations-list">
+            <div class="empty-state">
+              <div class="empty-icon">💰</div>
+              <p>Você ainda não fez nenhuma doação</p>
+              <a href="doacoes.html" class="btn btn-primary">Fazer uma Doação</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    
+    <footer><p>&copy; 2025 DOM - Todos os direitos reservados</p></footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/projetos.js"></script>
+    <script src="js/doacoes.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/profile-voluntario.js"></script>
+  </body>
+</html>

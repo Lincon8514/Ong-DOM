@@ -1,0 +1,1252 @@
+/* ========== VARIÁVEIS GLOBAIS ========== */
+:root {
+  /* Paleta Principal */
+  --rosa-claro: #ffb3d0;
+  --rosa-medio: #ff69b4;
+  --rosa-escuro: #c71585;
+  --cinza-claro: #f5f5f5;
+  --cinza-medio: #999;
+  --cinza-escuro: #333;
+  --branco: #fff;
+  --preto: #000;
+  --verde: #4caf50;
+  --verde-claro: #c8e6c9;
+  --verde-escuro: #2e7d32;
+  --vermelho: #f44336;
+}
+
+/* ========== TEMA ESCURO - VARIÁVEIS ========== */
+body[data-theme="dark"] {
+  --bg-principal: #1a1a1a;
+  --bg-secundario: #2a2a2a;
+  --bg-terciario: #3a3a3a;
+  --bg-hover: #404040;
+  --borda: #404040;
+  --borda-hover: #606060;
+  --texto-titulo: #f5f5f5;
+  --texto-principal: #d0d0d0;
+  --texto-secundario: #b0b0b0;
+  --texto-placeholder: #808080;
+  --destaque: #ff85c0;
+  --destaque-hover: #ff69b4;
+  background-color: var(--bg-principal);
+  color: var(--texto-principal);
+}
+
+/* ========== RESET BÁSICO ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--branco);
+  color: var(--cinza-escuro);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========== HEADER ========== */
+header {
+  background: linear-gradient(135deg, var(--rosa-medio), var(--rosa-escuro));
+  color: var(--branco);
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand img {
+  height: 50px;
+}
+
+/* NAVEGAÇÃO */
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+nav a {
+  color: var(--branco);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+nav a.active {
+  background-color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.login-btn {
+  background: var(--branco);
+  color: var(--rosa-medio);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* BOTÕES DO HEADER */
+#menu-btn {
+  display: none;
+  background: var(--branco);
+  color: var(--rosa-medio);
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--branco);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* PROFILE MENU */
+.profile-section {
+  position: relative;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.profile-info:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--branco);
+}
+
+.profile-name {
+  font-weight: 600;
+  color: var(--branco);
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--branco);
+  color: var(--cinza-escuro);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  min-width: 220px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.profile-dropdown.show {
+  display: block;
+  animation: dropdownSlideIn 0.3s ease;
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-dropdown ul {
+  flex-direction: column;
+  gap: 0;
+  padding: 0.5rem 0;
+}
+
+.profile-dropdown li {
+  list-style: none;
+}
+
+.profile-dropdown a {
+  color: var(--cinza-escuro);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s;
+  border-radius: 0;
+}
+
+.profile-dropdown a:hover {
+  background: var(--rosa-claro);
+  color: var(--rosa-escuro);
+}
+
+.profile-dropdown li:not(:last-child) {
+  border-bottom: 1px solid var(--cinza-claro);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: linear-gradient(135deg, var(--rosa-escuro), var(--rosa-medio));
+  color: var(--branco);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* ========== BOTÕES GLOBAIS ========== */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--rosa-medio);
+  color: var(--branco);
+}
+
+.btn-primary:hover {
+  background: var(--rosa-escuro);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--cinza-medio);
+  color: var(--branco);
+}
+
+.btn-danger {
+  background: var(--vermelho);
+  color: var(--branco);
+}
+
+.btn-success {
+  background: var(--verde);
+  color: var(--branco);
+}
+
+/* ========== FORMS GLOBAIS ========== */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--rosa-escuro);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--cinza-claro);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--rosa-medio);
+}
+
+/* ========== TEMA ESCURO - APLICAÇÃO GLOBAL ========== */
+
+/* Textos */
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3,
+body[data-theme="dark"] h4,
+body[data-theme="dark"] h5,
+body[data-theme="dark"] h6 {
+  color: var(--texto-titulo) !important;
+}
+
+body[data-theme="dark"] p,
+body[data-theme="dark"] span,
+body[data-theme="dark"] li,
+body[data-theme="dark"] label {
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] a {
+  color: var(--destaque) !important;
+}
+
+/* Header e Footer */
+body[data-theme="dark"] header {
+  background: linear-gradient(135deg, #8b3a62, #6b1554);
+}
+
+body[data-theme="dark"] footer {
+  background: linear-gradient(135deg, #6b1554, #8b3a62);
+}
+
+body[data-theme="dark"] nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Profile Dropdown */
+body[data-theme="dark"] .profile-dropdown {
+  background: var(--bg-secundario);
+  color: var(--texto-principal);
+}
+
+body[data-theme="dark"] .profile-dropdown a {
+  color: var(--texto-principal);
+}
+
+body[data-theme="dark"] .profile-dropdown a:hover {
+  background: rgba(255, 133, 192, 0.2);
+  color: var(--destaque);
+}
+
+body[data-theme="dark"] .profile-dropdown li:not(:last-child) {
+  border-bottom-color: var(--borda);
+}
+
+/* Cards Genéricos */
+
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .project-card,
+body[data-theme="dark"] .quem-somos-card,
+body[data-theme="dark"] .team-member,
+body[data-theme="dark"] .profile-card,
+body[data-theme="dark"] .project-item,
+body[data-theme="dark"] .project-admin-card,
+body[data-theme="dark"] .message-card,
+body[data-theme="dark"] .mensagem-card,
+body[data-theme="dark"] .donation-item,
+body[data-theme="dark"] .inscrito-item,
+body[data-theme="dark"] .voluntario-card {
+  background: var(--bg-secundario) !important;
+  color: var(--texto-principal) !important;
+}
+
+
+/* Cards de valor de doação */
+body[data-theme="dark"] .valor-card,
+body[data-theme="dark"] .donation-amount-card {
+  background: var(--bg-secundario) !important;
+  border-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .valor-card:hover,
+body[data-theme="dark"] .donation-amount-card:hover {
+  background: var(--bg-terciario) !important;
+  border-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .valor-card.active,
+body[data-theme="dark"] .donation-amount-card.active {
+  background: var(--rosa-medio) !important;
+  border-color: var(--rosa-medio) !important;
+  color: #ffffff !important;
+}
+
+/* Card de valor personalizado */
+body[data-theme="dark"] .valor-custom {
+  background: var(--bg-secundario) !important;
+  border-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .valor-custom label {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .valor-custom-input {
+  background: var(--bg-principal) !important;
+  border-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .valor-custom-input span {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .valor-custom-input input {
+  background: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+  border: none !important;
+}
+
+body[data-theme="dark"] .valor-custom-input input::placeholder {
+  color: var(--texto-placeholder) !important;
+}
+
+body[data-theme="dark"] .valor-custom-input input:focus {
+  outline: none !important;
+}
+/* Cards de método de pagamento */
+body[data-theme="dark"] .payment-method,
+body[data-theme="dark"] .metodo-pagamento,
+body[data-theme="dark"] .payment-option {
+  background: var(--bg-secundario) !important;
+  border-color: var(--borda) !important;
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .payment-method:hover,
+body[data-theme="dark"] .metodo-pagamento:hover,
+body[data-theme="dark"] .payment-option:hover {
+  background: var(--bg-terciario) !important;
+  border-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .payment-method.active,
+body[data-theme="dark"] .metodo-pagamento.active,
+body[data-theme="dark"] .payment-option.active {
+  background: var(--rosa-medio) !important;
+  border-color: var(--rosa-medio) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .payment-method-icon,
+body[data-theme="dark"] .payment-icon {
+  filter: brightness(0.9);
+}
+
+/* Input de valor personalizado */
+body[data-theme="dark"] .custom-amount-container,
+body[data-theme="dark"] .valor-personalizado {
+  background: var(--bg-secundario) !important;
+  border-color: var(--borda) !important;
+}
+
+
+
+body[data-theme="dark"] .card h3,
+body[data-theme="dark"] .card h4,
+body[data-theme="dark"] .project-card h3,
+body[data-theme="dark"] .project-item h3,
+body[data-theme="dark"] .project-item h4,
+body[data-theme="dark"] .project-item-title,
+body[data-theme="dark"] .message-sender,
+body[data-theme="dark"] .mensagem-autor,
+body[data-theme="dark"] .donation-valor,
+body[data-theme="dark"] .inscrito-nome,
+body[data-theme="dark"] .voluntario-nome,
+body[data-theme="dark"] .profile-card-title,
+body[data-theme="dark"] .profile-section-title,
+body[data-theme="dark"] .section-title,
+body[data-theme="dark"] .category-title,
+body[data-theme="dark"] .content-header h2,
+body[data-theme="dark"] .content-header h3 {
+  color: var(--destaque) !important;
+}
+
+/* Inputs e Forms */
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea,
+body[data-theme="dark"] select,
+body[data-theme="dark"] .form-group input,
+body[data-theme="dark"] .form-group select,
+body[data-theme="dark"] .form-group textarea {
+  background: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+  border-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] input::placeholder,
+body[data-theme="dark"] textarea::placeholder {
+  color: var(--texto-placeholder) !important;
+}
+
+body[data-theme="dark"] input:focus,
+body[data-theme="dark"] textarea:focus,
+body[data-theme="dark"] select:focus {
+  border-color: var(--destaque-hover) !important;
+}
+
+body[data-theme="dark"] .form-group label {
+  color: var(--destaque) !important;
+}
+
+/* Botões */
+body[data-theme="dark"] .btn-secondary {
+  background: var(--bg-hover) !important;
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .btn-secondary:hover {
+  background: var(--bg-terciario) !important;
+}
+
+body[data-theme="dark"] .btn-details,
+body[data-theme="dark"] .btn-editar {
+  background: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+  border-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .btn-details:hover,
+body[data-theme="dark"] .btn-editar:hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--destaque) !important;
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .btn-excluir:hover,
+body[data-theme="dark"] .btn-desativar:hover {
+  background: rgba(244, 67, 54, 0.2) !important;
+  border-color: var(--vermelho) !important;
+  color: var(--vermelho) !important;
+}
+
+/* Seções e Containers */
+body[data-theme="dark"] .quem-somos,
+body[data-theme="dark"] .nossa-equipe,
+body[data-theme="dark"] .admin-stats,
+body[data-theme="dark"] .admin-content,
+body[data-theme="dark"] .profile-container {
+  background: var(--bg-principal) !important;
+}
+
+body[data-theme="dark"] .beneficios-aleitamento {
+  background: linear-gradient(135deg, var(--bg-principal), #252525) !important;
+}
+
+body[data-theme="dark"] .sobre-b2b {
+  background: linear-gradient(135deg, var(--bg-principal), #2a2020) !important;
+}
+
+body[data-theme="dark"] .sobre-stats,
+body[data-theme="dark"] .contact-form-section,
+body[data-theme="dark"] .info-card,
+body[data-theme="dark"] .social-media,
+body[data-theme="dark"] .map-section,
+body[data-theme="dark"] .filters-container,
+body[data-theme="dark"] .valores-sugeridos,
+body[data-theme="dark"] .doacao-form,
+body[data-theme="dark"] .impacto-section,
+body[data-theme="dark"] .historico-doacoes,
+body[data-theme="dark"] .mural-mensagens,
+body[data-theme="dark"] .admin-tabs,
+body[data-theme="dark"] .auth-box,
+body[data-theme="dark"] .login-box,
+body[data-theme="dark"] .register-box {
+  background: var(--bg-secundario) !important;
+}
+
+/* Elementos Específicos */
+body[data-theme="dark"] .section-subtitle,
+body[data-theme="dark"] .profile-card-subtitle,
+body[data-theme="dark"] .stat-label,
+body[data-theme="dark"] .message-email,
+body[data-theme="dark"] .message-date,
+body[data-theme="dark"] .mensagem-data,
+body[data-theme="dark"] .project-item-info,
+body[data-theme="dark"] .donation-data,
+body[data-theme="dark"] .inscrito-email,
+body[data-theme="dark"] .voluntario-email,
+body[data-theme="dark"] .project-date,
+body[data-theme="dark"] .vagas-count {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .empty-state,
+body[data-theme="dark"] .empty-state p,
+body[data-theme="dark"] .message-status,
+body[data-theme="dark"] .mensagem-status,
+body[data-theme="dark"] .project-item-date,
+body[data-theme="dark"] .map-placeholder {
+  color: var(--texto-placeholder) !important;
+}
+
+/* Tabelas */
+body[data-theme="dark"] .users-table,
+body[data-theme="dark"] .projects-table,
+body[data-theme="dark"] table {
+  background: var(--bg-secundario) !important;
+}
+
+body[data-theme="dark"] table th {
+  background: linear-gradient(135deg, var(--destaque), var(--destaque-hover)) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] table td {
+  color: var(--texto-principal) !important;
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] table tr:nth-child(even) {
+  background: var(--bg-principal) !important;
+}
+
+body[data-theme="dark"] table tr:hover {
+  background: var(--bg-terciario) !important;
+}
+
+/* Filtros e Tabs */
+body[data-theme="dark"] .filter-btn,
+body[data-theme="dark"] .filter-group button {
+  background: var(--bg-principal) !important;
+  border-color: var(--borda) !important;
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .filter-btn:hover,
+body[data-theme="dark"] .filter-group button:hover {
+  border-color: var(--destaque-hover) !important;
+  color: var(--destaque-hover) !important;
+}
+
+body[data-theme="dark"] .filter-btn.active,
+body[data-theme="dark"] .filter-group button.active {
+  background: linear-gradient(135deg, var(--rosa-medio), var(--rosa-escuro)) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .tab-btn {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .tab-btn:hover {
+  color: var(--destaque) !important;
+  background: rgba(255, 133, 192, 0.1) !important;
+}
+
+body[data-theme="dark"] .tab-btn.active {
+  color: var(--destaque) !important;
+  border-bottom-color: var(--destaque) !important;
+}
+
+/* Cards com Bordas */
+body[data-theme="dark"] .project-item,
+body[data-theme="dark"] .message-card,
+body[data-theme="dark"] .mensagem-card,
+body[data-theme="dark"] .donation-item {
+  border-left-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .stat-item {
+  background: var(--bg-principal) !important;
+  border-color: var(--borda) !important;
+}
+
+/* Hover Effects */
+body[data-theme="dark"] .project-item:hover,
+body[data-theme="dark"] .project-admin-card:hover,
+body[data-theme="dark"] .message-card:hover,
+body[data-theme="dark"] .mensagem-card:hover,
+body[data-theme="dark"] .donation-item:hover,
+body[data-theme="dark"] .inscrito-item:hover,
+body[data-theme="dark"] .voluntario-card:hover {
+  background: var(--bg-terciario) !important;
+  box-shadow: 0 4px 12px rgba(255, 133, 192, 0.2) !important;
+}
+
+body[data-theme="dark"] .valor-card:hover,
+body[data-theme="dark"] .payment-method:hover {
+  background: var(--bg-terciario) !important;
+  border-color: var(--destaque-hover) !important;
+}
+
+/* Elementos Ativos */
+body[data-theme="dark"] .valor-card.active,
+body[data-theme="dark"] .payment-method.active {
+  background: var(--rosa-medio) !important;
+  color: #ffffff !important;
+}
+
+/* Status e Badges */
+body[data-theme="dark"] .project-status,
+body[data-theme="dark"] .badge.ativo {
+  background: var(--verde) !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .project-status.inativo,
+body[data-theme="dark"] .badge.inativo {
+  background: var(--bg-hover) !important;
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .message-status.pendente {
+  color: #ff9800 !important;
+}
+
+body[data-theme="dark"] .message-status.respondida {
+  color: var(--verde) !important;
+}
+
+/* Modal */
+body[data-theme="dark"] .modal {
+  background: rgba(0, 0, 0, 0.85) !important;
+}
+
+body[data-theme="dark"] .modal-content {
+  background: var(--bg-secundario) !important;
+}
+
+/* ========== TEMA ESCURO - PAINEL ADMIN ========== */
+
+/* Header Admin */
+body[data-theme="dark"] .profile-header {
+  background: linear-gradient(135deg, var(--destaque), var(--destaque-hover)) !important;
+}
+
+body[data-theme="dark"] .profile-avatar {
+  background: var(--bg-principal) !important;
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .stat-card {
+  background: linear-gradient(135deg, var(--destaque), var(--destaque-hover)) !important;
+}
+
+body[data-theme="dark"] .btn-profile {
+  border-color: white !important;
+}
+
+body[data-theme="dark"] .btn-profile:hover {
+  background: white !important;
+  color: var(--rosa-escuro) !important;
+}
+
+/* Abas e Conteúdo Admin */
+body[data-theme="dark"] .admin-tabs {
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .tab-btn {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .tab-btn:hover,
+body[data-theme="dark"] .tab-btn.active {
+  color: var(--destaque) !important;
+  border-bottom-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .admin-content {
+  background: var(--bg-secundario) !important;
+}
+
+body[data-theme="dark"] .content-header h2 {
+  color: var(--destaque) !important;
+}
+
+/* Tabelas Admin */
+body[data-theme="dark"] .users-table table {
+  background: var(--bg-secundario) !important;
+}
+
+body[data-theme="dark"] .users-table thead {
+  background: linear-gradient(135deg, var(--destaque), var(--destaque-hover)) !important;
+}
+
+body[data-theme="dark"] .users-table tbody tr {
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .users-table tbody tr:hover {
+  background: var(--bg-principal) !important;
+}
+
+body[data-theme="dark"] .users-table tbody td {
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .users-table tbody td:first-child {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .user-badge.admin {
+  background: linear-gradient(135deg, var(--destaque), var(--destaque-hover)) !important;
+}
+
+body[data-theme="dark"] .user-badge.voluntario {
+  background: rgba(33, 150, 243, 0.2) !important;
+  color: #64b5f6 !important;
+}
+
+body[data-theme="dark"] .users-table .btn.btn-secondary {
+  background: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+}
+
+/* Modais Admin */
+body[data-theme="dark"] .modal {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+body[data-theme="dark"] .modal-content {
+  background: var(--bg-secundario) !important;
+}
+
+body[data-theme="dark"] .modal-header {
+  background: linear-gradient(135deg, var(--bg-principal), var(--bg-secundario)) !important;
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .modal-header h2 {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .modal-close {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .modal-close:hover {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .modal-body {
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .form-group label {
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .form-group input,
+body[data-theme="dark"] .form-group select,
+body[data-theme="dark"] .form-group textarea {
+  background: var(--bg-principal) !important;
+  border-color: var(--borda) !important;
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .form-group input:focus,
+body[data-theme="dark"] .form-group select:focus,
+body[data-theme="dark"] .form-group textarea:focus {
+  border-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .form-actions {
+  border-top-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .btn-secondary {
+  background: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+}
+
+/* Mensagens Admin */
+body[data-theme="dark"] .message-card {
+  background: var(--bg-principal) !important;
+  border-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .message-card:hover {
+  border-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .message-header {
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .message-header strong {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .enrollments-list li {
+  background: var(--bg-principal) !important;
+  border-left-color: var(--destaque) !important;
+  color: var(--texto-principal) !important;
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+  #menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--rosa-medio);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    z-index: 9998;
+  }
+
+  nav.active {
+    left: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .brand img {
+    height: 40px;
+  }
+
+  .profile-dropdown {
+    position: static;
+    box-shadow: none;
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .profile-dropdown a {
+    color: var(--branco);
+    justify-content: center;
+  }
+
+  .profile-dropdown a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--branco);
+  }
+  
+  body[data-theme="dark"] nav {
+    background: linear-gradient(135deg, #8b3a62, #6b1554) !important;
+  }
+
+  body[data-theme="dark"] .profile-dropdown {
+    background: rgba(42, 42, 42, 0.95) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand img {
+    height: 35px;
+  }
+
+  header .container {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Perfil do Voluntário */
+body[data-theme="dark"] .profile-banner {
+  background: linear-gradient(135deg, var(--destaque), var(--destaque-hover)) !important;
+}
+
+body[data-theme="dark"] .profile-avatar-large {
+  background: var(--bg-principal) !important;
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .btn-logout-header {
+  background: var(--bg-principal) !important;
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .btn-logout-header:hover {
+  background: var(--bg-terciario) !important;
+}
+
+body[data-theme="dark"] .profile-tabs {
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .tab-btn {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .tab-btn:hover {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .tab-btn.active {
+  color: var(--destaque) !important;
+  border-bottom-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .profile-content {
+  background: var(--bg-secundario) !important;
+}
+
+body[data-theme="dark"] .dados-header {
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .dados-header h2 {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .btn-edit-profile {
+  background: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .btn-edit-profile:hover {
+  background: var(--destaque-hover) !important;
+}
+
+body[data-theme="dark"] .modal-content {
+  background: var(--bg-secundario) !important;
+}
+
+body[data-theme="dark"] .modal-header {
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .modal-header h2 {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .modal-close {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .modal-close:hover {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .form-info {
+  background: rgba(33, 150, 243, 0.2) !important;
+  color: #64b5f6 !important;
+  border-left-color: #2196f3 !important;
+}
+
+/* Perfil - Cards de Projetos e Doações */
+body[data-theme="dark"] .project-card-mini,
+body[data-theme="dark"] .donation-card-mini {
+  background: var(--bg-principal) !important;
+  border-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .project-card-mini:hover,
+body[data-theme="dark"] .donation-card-mini:hover {
+  border-color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .project-card-mini-header h3 {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .project-description {
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .project-meta {
+  border-top-color: var(--borda) !important;
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .donation-card-mini-header {
+  border-bottom-color: var(--borda) !important;
+}
+
+body[data-theme="dark"] .donation-value {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .donation-method {
+  background: var(--bg-secundario) !important;
+  color: var(--texto-principal) !important;
+}
+
+body[data-theme="dark"] .donation-message {
+  background: rgba(255, 152, 0, 0.1) !important;
+  color: #ffb74d !important;
+}
+
+/* ========== TEMA ESCURO - LOGIN ========== */
+
+/* Container principal do Login */
+body[data-theme="dark"] .login-container,
+body[data-theme="dark"] .auth-container {
+  background: var(--bg-principal) !important;
+}
+
+/* Box de Login */
+body[data-theme="dark"] .login-box,
+body[data-theme="dark"] .auth-box {
+  background: var(--bg-secundario) !important;
+  border: 1px solid var(--borda) !important;
+}
+
+/* Título do Login */
+body[data-theme="dark"] .login-box h2,
+body[data-theme="dark"] .auth-box h2,
+body[data-theme="dark"] .login-title {
+  color: var(--destaque) !important;
+}
+
+/* Textos do Login */
+body[data-theme="dark"] .login-box p,
+body[data-theme="dark"] .auth-box p,
+body[data-theme="dark"] .login-text {
+  color: var(--texto-principal) !important;
+}
+
+/* Labels dos Inputs */
+body[data-theme="dark"] .login-box label,
+body[data-theme="dark"] .auth-box label {
+  color: var(--texto-principal) !important;
+}
+
+/* Inputs do Login */
+body[data-theme="dark"] .login-box input,
+body[data-theme="dark"] .auth-box input {
+  background: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+  border: 2px solid var(--borda) !important;
+}
+
+body[data-theme="dark"] .login-box input::placeholder,
+body[data-theme="dark"] .auth-box input::placeholder {
+  color: var(--texto-placeholder) !important;
+}
+
+body[data-theme="dark"] .login-box input:focus,
+body[data-theme="dark"] .auth-box input:focus {
+  border-color: var(--destaque) !important;
+}
+
+/* Links do Login */
+body[data-theme="dark"] .login-box a,
+body[data-theme="dark"] .auth-box a,
+body[data-theme="dark"] .forgot-password,
+body[data-theme="dark"] .register-link {
+  color: var(--destaque) !important;
+}
+
+body[data-theme="dark"] .login-box a:hover,
+body[data-theme="dark"] .auth-box a:hover {
+  color: var(--destaque-hover) !important;
+}
+
+/* Mensagem de erro */
+body[data-theme="dark"] .error-message,
+body[data-theme="dark"] .alert-error {
+  background: rgba(244, 67, 54, 0.2) !important;
+  color: #ff6b6b !important;
+  border: 1px solid #ff6b6b !important;
+}
+
+/* Mensagem de sucesso */
+body[data-theme="dark"] .success-message,
+body[data-theme="dark"] .alert-success {
+  background: rgba(76, 175, 80, 0.2) !important;
+  color: #81c784 !important;
+  border: 1px solid #81c784 !important;
+}
+
+/* Rodapé do Login */
+body[data-theme="dark"] .login-footer,
+body[data-theme="dark"] .auth-footer {
+  color: var(--texto-secundario) !important;
+  border-top-color: var(--borda) !important;
+}
+
+/* Divisor "ou" */
+body[data-theme="dark"] .divider,
+body[data-theme="dark"] .login-divider {
+  color: var(--texto-secundario) !important;
+}
+
+body[data-theme="dark"] .divider::before,
+body[data-theme="dark"] .divider::after,
+body[data-theme="dark"] .login-divider::before,
+body[data-theme="dark"] .login-divider::after {
+  background: var(--borda) !important;
+}
+
+/* Checkbox "Lembrar-me" */
+body[data-theme="dark"] .checkbox-label {
+  color: var(--texto-principal) !important;
+}
+
+/* Ícones */
+body[data-theme="dark"] .login-icon,
+body[data-theme="dark"] .auth-icon {
+  color: var(--destaque) !important;
+}
+
+/* Social Login Buttons */
+body[data-theme="dark"] .social-login-btn {
+  background: var(--bg-principal) !important;
+  color: var(--texto-principal) !important;
+  border: 1px solid var(--borda) !important;
+}
+
+body[data-theme="dark"] .social-login-btn:hover {
+  background: var(--bg-terciario) !important;
+  border-color: var(--destaque) !important;
+}
+
+/* Logo no Login */
+body[data-theme="dark"] .login-logo,
+body[data-theme="dark"] .auth-logo {
+  filter: brightness(1.2);
+}

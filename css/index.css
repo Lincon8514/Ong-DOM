@@ -1,0 +1,660 @@
+/* ========== ESTILOS DA PÁGINA INICIAL ========== */
+
+/* Remover margens/paddings globais da home */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+header {
+  margin: 0 !important;
+  padding: 1rem 0 !important;
+}
+
+.hero-carousel {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+}
+
+/* Banner Carousel (Rotativo) */
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background: #000;
+  margin-top: 0; /* ADICIONAR */
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.carousel-caption {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--branco);
+  max-width: 800px;
+  padding: 2rem;
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-caption h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.carousel-caption p {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.6;
+}
+
+.carousel-caption .btn {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.carousel-caption .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Controles do Carousel */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--branco);
+  border: none;
+  font-size: 2rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-control.prev {
+  left: 2rem;
+}
+
+.carousel-control.next {
+  right: 2rem;
+}
+
+/* Indicadores do Carousel */
+.carousel-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 3;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.indicator.active {
+  background: var(--branco);
+  width: 40px;
+  border-radius: 6px;
+}
+
+/* Seções gerais */
+section {
+  margin: 0 !important;
+  padding: 4rem 2rem !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem !important;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--rosa-escuro);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--cinza-medio);
+}
+
+.section-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Quem Somos (B2C) */
+.quem-somos {
+  background: var(--cinza-claro);
+}
+
+.quem-somos-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.quem-somos-card {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.quem-somos-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.15);
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.quem-somos-card h3 {
+  color: var(--rosa-escuro);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.quem-somos-card p {
+  line-height: 1.8;
+  color: var(--cinza-escuro);
+}
+
+.quem-somos-card strong {
+  color: var(--rosa-medio);
+}
+
+/* Projetos em Destaque */
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Sobre B2B */
+.sobre-b2b {
+  background: linear-gradient(135deg, #fff5f9, #ffe6f0);
+}
+
+.sobre-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.sobre-text h3 {
+  color: var(--rosa-escuro);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.sobre-text h4 {
+  color: var(--rosa-medio);
+  font-size: 1.3rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.sobre-text p {
+  line-height: 1.8;
+  color: var(--cinza-escuro);
+  margin-bottom: 1.5rem;
+}
+
+.beneficios-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.beneficios-list li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: start;
+}
+
+.check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--verde-claro);
+  color: var(--verde-escuro);
+  border-radius: 50%;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.beneficios-list strong {
+  color: var(--rosa-escuro);
+}
+
+.cta-empresas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.sobre-stats {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--rosa-claro), var(--rosa-medio));
+  border-radius: 12px;
+  color: var(--branco);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* Nossa Equipe (Galeria) */
+.nossa-equipe {
+  background: var(--cinza-claro);
+}
+
+.team-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.team-member {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  background: var(--branco);
+}
+
+.team-member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(255, 105, 180, 0.2);
+}
+
+.member-photo {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Proporção 1:1 */
+  overflow: hidden;
+}
+
+.member-photo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.team-member:hover .member-photo img {
+  transform: scale(1.1);
+}
+
+.member-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  color: var(--branco);
+  padding: 2rem 1rem 1rem 1rem;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.team-member:hover .member-info {
+  transform: translateY(0);
+}
+
+.member-name {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+}
+
+.member-role {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Benefícios do Aleitamento */
+.beneficios-aleitamento {
+  background: linear-gradient(135deg, #ffe6f0, #fff5f9);
+  padding: 5rem 2rem;
+}
+
+.aleitamento-intro {
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+}
+
+.aleitamento-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--cinza-escuro);
+  margin-bottom: 1.5rem;
+}
+
+.aleitamento-intro strong {
+  color: var(--rosa-escuro);
+  font-weight: 600;
+}
+
+/* Categoria de Benefícios */
+.benefits-category {
+  margin-bottom: 4rem;
+}
+
+.benefits-category:last-child {
+  margin-bottom: 0;
+}
+
+.category-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--rosa-escuro);
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rosa-claro), var(--rosa-medio));
+  border-radius: 2px;
+}
+
+/* Grid de Benefícios - 5 por linha */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 colunas fixas */
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 por linha em telas médias */
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 por linha em tablets */
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-grid {
+    grid-template-columns: 1fr; /* 1 por linha em mobile */
+    gap: 1rem;
+  }
+}
+
+/* Card em formato REDONDO (Círculo) */
+.benefit-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* Formato REDONDO */
+.drop-shape .benefit-image {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Proporção 1:1 = círculo perfeito */
+  overflow: hidden;
+  border-radius: 50%; /* CÍRCULO */
+  box-shadow: 0 8px 24px rgba(255, 105, 180, 0.25);
+  background: var(--rosa-claro);
+}
+
+.drop-shape .benefit-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.benefit-card:hover .benefit-image img {
+  transform: scale(1.15);
+  filter: brightness(0.6);
+}
+
+/* Overlay com texto */
+.benefit-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 105, 180, 0.95), rgba(219, 39, 119, 0.95));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 50%; /* CÍRCULO */
+  padding: 2rem;
+}
+
+.benefit-card:hover .benefit-overlay {
+  opacity: 1;
+}
+
+.benefit-text {
+  color: var(--branco);
+  text-align: center;
+}
+
+.benefit-text h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
+}
+
+.benefit-text p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hero-carousel {
+    height: 400px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 2rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1.1rem;
+  }
+
+  .carousel-control {
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+  }
+
+  .carousel-control.prev {
+    left: 1rem;
+  }
+
+  .carousel-control.next {
+    right: 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .sobre-content {
+    grid-template-columns: 1fr;
+  }
+
+  .team-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .cta-empresas {
+    flex-direction: column;
+  }
+
+  .cta-empresas .btn {
+    width: 100%;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .aleitamento-intro p {
+    font-size: 1rem;
+  }
+
+  .benefit-text h4 {
+    font-size: 1.1rem;
+  }
+
+  .benefit-text p {
+    font-size: 0.9rem;
+  }
+}

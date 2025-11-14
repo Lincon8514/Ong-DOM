@@ -1,0 +1,561 @@
+/* ========== ESTILOS EXCLUSIVOS DA PÁGINA DOAÇÕES ========== */
+
+.doacoes-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Hero Section */
+.doacoes-hero {
+  background: linear-gradient(135deg, var(--rosa-medio), var(--rosa-escuro));
+  color: var(--branco);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.doacoes-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.doacoes-hero p {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Valores Sugeridos */
+.valores-sugeridos {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.valores-sugeridos h2 {
+  color: var(--rosa-escuro);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.valor-card {
+  background: var(--cinza-claro);
+  border: 3px solid transparent;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.valor-card:hover {
+  background: var(--rosa-claro);
+  border-color: var(--rosa-medio);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.valor-card.active {
+  background: var(--rosa-medio);
+  border-color: var(--rosa-escuro);
+  color: var(--branco);
+}
+
+.valor-card .valor-preco {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.valor-card .valor-descricao {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.valor-card.active .valor-descricao {
+  opacity: 1;
+}
+
+/* Valor Personalizado */
+.valor-custom {
+  background: var(--branco);
+  padding: 1.5rem;
+  border: 2px dashed var(--rosa-medio);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.valor-custom label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--rosa-escuro);
+}
+
+.valor-custom-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.valor-custom-input span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rosa-medio);
+}
+
+.valor-custom-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1.25rem;
+  border: 2px solid var(--cinza-claro);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.valor-custom-input input:focus {
+  outline: none;
+  border-color: var(--rosa-medio);
+}
+
+/* Formulário de Doação */
+.doacao-form {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.doacao-form h2 {
+  color: var(--rosa-escuro);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ADICIONAR ISSO */
+.mensagem-section {
+  margin-bottom: 2rem;
+}
+
+.mensagem-section label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--rosa-escuro);
+  font-size: 1.1rem;
+}
+
+.mensagem-section textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--cinza-claro);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.3s;
+}
+
+.mensagem-section textarea:focus {
+  outline: none;
+  border-color: var(--rosa-medio);
+}
+
+.mensagem-section small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--cinza-medio);
+  font-size: 0.9rem;
+}
+
+.char-count {
+  text-align: right;
+  color: var(--cinza-medio);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.char-count.limit {
+  color: #f44336;
+  font-weight: 600;
+}
+
+/* Resumo da Doação */
+.doacao-resumo {
+  background: linear-gradient(135deg, var(--rosa-claro), var(--rosa-medio));
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: var(--rosa-escuro);
+}
+
+.doacao-resumo h3 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.resumo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.resumo-item:last-child {
+  border-bottom: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Métodos de Pagamento */
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.payment-method {
+  background: var(--cinza-claro);
+  border: 3px solid transparent;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-method:hover {
+  background: var(--rosa-claro);
+  border-color: var(--rosa-medio);
+  transform: translateY(-3px);
+}
+
+.payment-method.active {
+  background: var(--rosa-medio);
+  border-color: var(--rosa-escuro);
+  color: var(--branco);
+}
+
+.payment-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Botão de Doar */
+.btn-doar {
+  width: 100%;
+  padding: 1.25rem;
+  font-size: 1.25rem;
+  background: linear-gradient(135deg, var(--rosa-medio), var(--rosa-escuro));
+  color: var(--branco);
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(199, 21, 133, 0.3);
+}
+
+.btn-doar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(199, 21, 133, 0.4);
+}
+
+.btn-doar:active {
+  transform: translateY(-1px);
+}
+
+/* Impacto Visual */
+.impacto-section {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.impacto-section h3 {
+  color: var(--rosa-escuro);
+  margin-bottom: 1.5rem;
+}
+
+.impacto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.impacto-item {
+  padding: 1.5rem;
+}
+
+.impacto-numero {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--rosa-medio);
+  margin-bottom: 0.5rem;
+}
+
+.impacto-texto {
+  color: var(--cinza-escuro);
+  font-size: 1rem;
+}
+
+/* Histórico de Doações */
+.historico-doacoes {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.historico-doacoes h3 {
+  color: var(--rosa-escuro);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.historico-lista {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.historico-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--cinza-claro);
+  transition: background 0.3s;
+}
+
+.historico-item:hover {
+  background: var(--cinza-claro);
+}
+
+.historico-item:last-child {
+  border-bottom: none;
+}
+
+.historico-info {
+  flex: 1;
+}
+
+.historico-data {
+  color: var(--cinza-medio);
+  font-size: 0.9rem;
+}
+
+.historico-valor {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rosa-medio);
+}
+
+/* Mural de Mensagens */
+.mural-mensagens {
+  background: var(--branco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.mural-mensagens h3 {
+  color: var(--rosa-escuro);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.mensagens-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.mensagem-card {
+  background: var(--cinza-claro);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--rosa-medio);
+  transition: all 0.3s;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mensagem-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mensagem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.mensagem-autor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--rosa-escuro);
+}
+
+.mensagem-valor {
+  background: var(--rosa-medio);
+  color: var(--branco);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.mensagem-texto {
+  color: var(--cinza-escuro);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.mensagem-data {
+  color: var(--cinza-medio);
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.mensagens-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--cinza-medio);
+}
+
+.mensagens-empty p {
+  margin: 0.5rem 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .doacoes-hero h1 {
+    font-size: 2rem;
+  }
+
+  .doacoes-hero p {
+    font-size: 1rem;
+  }
+
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-methods {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .impacto-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .mensagem-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mensagem-valor {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .doacoes-container {
+    padding: 0 0.5rem;
+  }
+
+  .doacoes-hero {
+    padding: 2rem 1rem;
+  }
+
+  .doacoes-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .valores-sugeridos,
+  .doacao-form,
+  .impacto-section,
+  .historico-doacoes {
+    padding: 1.5rem 1rem;
+  }
+
+  .valores-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .valor-card {
+    padding: 1rem;
+  }
+
+  .payment-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-doar {
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .mural-mensagens {
+    padding: 1.5rem 1rem;
+  }
+
+  .mensagem-card {
+    padding: 1rem;
+  }
+
+  .mensagens-lista {
+    max-height: 400px;
+  }
+}
